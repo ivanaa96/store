@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import CustomerService from "../services/CustomerService";
+import { Link } from "react-router-dom";
 
 function AppCustomers() {
-	const [customers, setCustomers] = useState(CustomerService.getAll());
-
 	const [newCustomer, setNewCustomer] = useState({
 		firstName: "",
 		lastName: "",
 	});
+
+	const [customers, setCustomers] = useState(CustomerService.getAll());
 
 	const handleDelete = (id) => {
 		const isDeleted = CustomerService.delete(id);
@@ -19,6 +20,16 @@ function AppCustomers() {
 				...customers.slice(index + 1),
 			]);
 		}
+	};
+
+	const addNewCustomer = (e) => {
+		e.preventDefault();
+		const newCustomerData = CustomerService.create(newCustomer);
+		setCustomers([...customers, newCustomerData]);
+		setNewCustomer({
+			firstName: "",
+			lastName: "",
+		});
 	};
 
 	const handleFirstNameChange = (e) => {
@@ -35,15 +46,6 @@ function AppCustomers() {
 		});
 	};
 
-	const addNewCustomer = (e) => {
-		e.preventDefault();
-		setCustomers([...customers, newCustomer]);
-		setNewCustomer({
-			firstName: "",
-			lastName: "",
-		});
-	};
-
 	return (
 		<div className="container-fluid col-5">
 			<h2>List of customers:</h2>
@@ -57,13 +59,15 @@ function AppCustomers() {
 						>
 							Delete
 						</button>
+						<br />
+						<Link to={`/customers/${customer.id}`}>Latest Purchase</Link>
 					</li>
 				))}
 			</ul>
 			<hr />
 			<div className="container">
 				<h2>Form:</h2>
-				<form onSubmit={addNewCustomer}>
+				<form onSubmit={addNewCustomer} className="form-group">
 					<label htmlFor="firstName" classname="col-form-label col-25">
 						First Name:
 					</label>

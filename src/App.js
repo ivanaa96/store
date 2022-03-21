@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AppCustomers from "./pages/AppCustomers";
 import AppProducts from "./pages/AppProducts";
+import LatestPurchase from "./pages/LatestPurchase";
 
 function App() {
 	return (
@@ -28,6 +29,9 @@ function App() {
 					</Route>
 					<Route path="/products" exact>
 						<AppProducts />
+					</Route>
+					<Route path="/customers/:id">
+						<LatestPurchase />
 					</Route>
 				</Switch>
 			</Router>
