@@ -41,13 +41,9 @@ class CustomerService {
 	}
 
 	delete(id) {
-		const newCustomersList = [
-			...this.customers.filter((customer, id) => {
-				return customer.id === id;
-			}),
-		];
-
-		return newCustomersList;
+		const index = this.customers.findIndex((customer) => customer.id === id);
+		this.customers.splice(index, 1);
+		return true;
 	}
 
 	create(newCustomer) {

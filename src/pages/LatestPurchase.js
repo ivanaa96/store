@@ -1,11 +1,15 @@
 import React from "react";
 import CustomerService from "../services/CustomerService";
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 
 function LatestPurchase() {
 	const { id } = useParams();
 
 	const customer = CustomerService.getId(id);
+
+	if (!customer) {
+		return <Redirect to="/customers" />;
+	}
 
 	return (
 		<div className="container-fluid">
