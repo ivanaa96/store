@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function SingleProduct({
 	id,
@@ -17,6 +18,7 @@ function SingleProduct({
 			<button className="my-button" onClick={() => decrementCallback(id)}>
 				-
 			</button>
+			<Link to={`products/${id}`}>Buy product</Link>
 		</div>
 	);
 }

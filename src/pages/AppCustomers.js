@@ -68,7 +68,7 @@ function AppCustomers() {
 			<div className="container">
 				<h2>Form:</h2>
 				<form onSubmit={addNewCustomer} className="form-group">
-					<label htmlFor="firstName" classname="col-form-label col-25">
+					<label htmlFor="firstName" className="col-form-label col-25">
 						First Name:
 					</label>
 					<input
@@ -82,7 +82,7 @@ function AppCustomers() {
 					/>
 					<br />
 
-					<label htmlFor="lastName" classname="col-form-label col-25">
+					<label htmlFor="lastName" className="col-form-label col-25">
 						Last Name:
 					</label>
 					<input

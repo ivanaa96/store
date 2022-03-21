@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AppCustomers from "./pages/AppCustomers";
 import AppProducts from "./pages/AppProducts";
 import LatestPurchase from "./pages/LatestPurchase";
+import BuyProduct from "./pages/BuyProduct";
 
 function App() {
 	return (
@@ -32,6 +33,9 @@ function App() {
 					</Route>
 					<Route path="/customers/:id">
 						<LatestPurchase />
+					</Route>
+					<Route path="/products/:id">
+						<BuyProduct />
 					</Route>
 				</Switch>
 			</Router>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import SingleProduct from "../components/SingleProduct";
-import { Link } from "react-router-dom";
 import ProductService from "../services/ProductService";
 
 function AppProducts() {

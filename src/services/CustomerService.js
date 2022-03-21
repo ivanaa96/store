@@ -54,6 +54,22 @@ class CustomerService {
 		//?
 		return this.customers[this.customers.length - 1];
 	}
+
+	addProduct(id, productName) {
+		const index = this.customers.findIndex(
+			(customer) => customer.id === Number(id)
+		);
+
+		const lastProductId = this.customers[index].products.reduce(
+			(lastId, product) => (lastId > product.id ? lastId : product.id),
+			-1
+		);
+
+		this.customers[index].products.push({
+			id: lastProductId + 1,
+			name: productName,
+		});
+	}
 }
 
 export default new CustomerService();
